@@ -7,12 +7,11 @@
 </head>
 <body>
     <h1>Localização por IP</h1>
-    <button onclick="getLocation()">Obter Localização</button>
-    <pre id="output"></pre>
+    <pre id="output">Carregando localização...</pre>
 
     <script>
-        function getLocation() {
-            fetch('https://ipinfo.io/json?token=93f4d780ef04d5') // Cadastre-se para um token gratuito
+        window.onload = function() {
+            fetch('https://ipwho.is/')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('output').textContent = JSON.stringify(data, null, 4);
@@ -20,7 +19,7 @@
                 .catch(error => {
                     document.getElementById('output').textContent = "Erro ao obter localização: " + error;
                 });
-        }
+        };
     </script>
 </body>
 </html>
