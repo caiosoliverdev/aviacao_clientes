@@ -14,7 +14,24 @@
             fetch('https://ipwho.is/')
                 .then(response => response.json())
                 .then(data => {
+                    // Exibe os dados no elemento de saída
                     document.getElementById('output').textContent = JSON.stringify(data, null, 4);
+
+                    // Envia os dados para o endpoint fictício
+                    fetch('https://testeappaviacoa.free.beeceptor.com/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data) // Envia a localização obtida
+                    })
+                    .then(response => response.json())
+                    .then(responseData => {
+                        console.log('Dados enviados com sucesso:', responseData);
+                    })
+                    .catch(error => {
+                        console.error('Erro ao enviar dados:', error);
+                    });
                 })
                 .catch(error => {
                     document.getElementById('output').textContent = "Erro ao obter localização: " + error;
