@@ -12,7 +12,7 @@
 
     <script>
         function getLocation() {
-            fetch('https://ipinfo.io/json?token=SEU_TOKEN_AQUI') // Cadastre-se para um token gratuito
+            fetch('https://ipinfo.io/json?token=93f4d780ef04d5') // Cadastre-se para um token gratuito
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('output').textContent = JSON.stringify(data, null, 4);
